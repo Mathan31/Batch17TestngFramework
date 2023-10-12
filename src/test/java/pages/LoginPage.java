@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 import base.BaseClass;
 
-public class LoginPage extends BaseClass{
+public class LoginPage extends MenuPage{
 	
 	private By oUsernameText = By.id("username");
 	private By oPasswordText = By.id("password");
@@ -49,6 +49,11 @@ public class LoginPage extends BaseClass{
 		
 		boolean result = driver.findElement(oLoginFailedInnerText).isDisplayed();
 		return result;
+	}
+	
+	public RegistrationPage clickOnRegistrationLink() {
+		driver.findElement(oRegisterLink).click();
+		return new RegistrationPage();
 	}
 
 	
