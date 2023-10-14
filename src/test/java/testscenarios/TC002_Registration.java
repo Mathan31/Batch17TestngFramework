@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import base.BaseClass;
 import pages.LoginPage;
 import pages.RegistrationPage;
+import utilities.FakerDataFactory;
 
 public class TC002_Registration extends BaseClass{
 	
@@ -29,14 +30,14 @@ public class TC002_Registration extends BaseClass{
 	public void registerWithMandatoryFields() {
 		boolean result = new LoginPage()
 		.clickOnRegistrationLink()
-		.enterFirstName("Mathan")
-		.selectTitle("Mr")
+		.enterFirstName(FakerDataFactory.getFirstName())
+		.selectTitle(FakerDataFactory.getTitle())
 		.enterMiddleName("")
-		.enterLastName("Chandrasekaran")
-		.selectGender("Male")
-		.enterUserName("Credo"+getRandomInteger(999, 9999))
-		.enterEmail("credo"+getRandomInteger(999, 9999)+"@gmail.com")
-		.enterPassword("Credo@123")
+		.enterLastName(FakerDataFactory.getLastName())
+		.selectGender(FakerDataFactory.getGender())
+		.enterUserName(FakerDataFactory.getUserName())
+		.enterEmail(FakerDataFactory.getEmailAddress())
+		.enterPassword(FakerDataFactory.getPassword())
 		.clickOnRegisterBtn()
 		.verifyUserRegistration()
 		.clickOnUILogo()
@@ -50,10 +51,4 @@ public class TC002_Registration extends BaseClass{
 		
 	}
 	
-	public static int getRandomInteger(int start,int end) {
-		Random random = new Random();
-		int result = random.nextInt((end - start) + 1) + 1;
-		return result;
-	}
-
 }

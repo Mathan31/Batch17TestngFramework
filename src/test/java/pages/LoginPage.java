@@ -26,11 +26,13 @@ public class LoginPage extends MenuPage{
 	}
 	
 	public LoginPage enterUserName(String uName) {
+		driver.findElement(oUsernameText).clear();
 		driver.findElement(oUsernameText).sendKeys(uName);
 		return this;
 	}
 	
 	public LoginPage enterPassword(String password) {
+		driver.findElement(oPasswordText).clear();
 		driver.findElement(oPasswordText).sendKeys(password);
 		return this;
 	}
