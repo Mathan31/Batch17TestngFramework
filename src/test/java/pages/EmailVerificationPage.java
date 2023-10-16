@@ -1,12 +1,18 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class EmailVerificationPage extends MenuPage {
 
 	private By oWelcome = By.xpath("//h2[contains(text(),'Welcome To The UiBank Family!')]");
 	// private By oLogin = By.linkText("Login");
 	
+	private WebDriver driver;
+
+	public EmailVerificationPage(WebDriver driver) {
+		this.driver = driver;
+	}
 	
 	public EmailVerificationPage verifyUserRegistration() {
 		
@@ -21,7 +27,7 @@ public class EmailVerificationPage extends MenuPage {
 
 	public LoginPage clickOnUILogo() {
 		driver.findElement(oUILogo).click();
-		return new LoginPage(); 
+		return new LoginPage(driver); 
 	}
 
 }

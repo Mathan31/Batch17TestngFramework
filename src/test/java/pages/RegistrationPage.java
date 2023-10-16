@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class RegistrationPage extends MenuPage{
@@ -14,7 +15,14 @@ public class RegistrationPage extends MenuPage{
 	private By oRegister = By.xpath("//button[text()='Register']");
 	private By oTitle = By.id("title");
 	private By oGender = By.id("sex");
+	private By oAgree = By.xpath("//input[@id='agreeCheckbox']");
 	
+	
+	private WebDriver driver;
+
+	public RegistrationPage(WebDriver driver) {
+		this.driver = driver;
+	}
 	
 	public boolean verifyAllTheRegistrationFields() {
 		if(driver.findElement(oUserName).isDisplayed() && driver.findElement(oPassword).isDisplayed()
@@ -67,13 +75,18 @@ public class RegistrationPage extends MenuPage{
 		return this;
 	}
 	
+	public RegistrationPage clickOnAgree() {
+		driver.findElement(oAgree).click();
+		return this;
+	}
+	
 	public EmailVerificationPage clickOnRegisterBtn() {
 		driver.findElement(oRegister).click();
-		return new EmailVerificationPage();
+		return new EmailVerificationPage(driver);
 	}
 
 	public LoginPage clickOnUILogo() {
 		driver.findElement(oUILogo).click();
-		return new LoginPage();
+		return new LoginPage(driver);
 	}
 }

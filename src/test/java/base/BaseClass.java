@@ -16,7 +16,7 @@ import utilities.PropertiesReader;
 
 public class BaseClass{
 	
-	public static WebDriver driver; //545642121
+	public WebDriver driver; //545642121
 	public String fileName = "environment";
 	public String iBrowser = PropertiesReader.getPropertyValue(fileName, "Browser");
 	public String sURL = PropertiesReader.getPropertyValue(fileName, "URL");
