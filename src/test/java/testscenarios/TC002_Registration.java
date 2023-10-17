@@ -1,8 +1,7 @@
 package testscenarios;
 
-import java.util.Random;
-
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import base.BaseClass;
@@ -12,13 +11,22 @@ import utilities.FakerDataFactory;
 
 public class TC002_Registration extends BaseClass{
 	
+	@BeforeTest
+	public void testSetup() {
+		authors = "Jessi";
+		category = "Smoke";
+		testName = "Registration Test";
+		testDescription = "Registration Test Validation";
+		module = "Registration";
+	}
+	
 	@Test(priority = 1)
 	public void registerFieldValidation() {
-		boolean regResult = new LoginPage(driver)
+		boolean regResult = new LoginPage(driver,node)
 		.clickOnRegistrationLink()
 		.verifyAllTheRegistrationFields();
 		
-		boolean loginResult = new RegistrationPage(driver)
+		boolean loginResult = new RegistrationPage(driver,node)
 		.clickOnUILogo()
 		.verifyElement();
 		
@@ -28,7 +36,7 @@ public class TC002_Registration extends BaseClass{
 	
 	@Test(priority = 2)
 	public void registerWithMandatoryFields() {
-		boolean result = new LoginPage(driver)
+		boolean result = new LoginPage(driver,node)
 		.clickOnRegistrationLink()
 		.enterFirstName(FakerDataFactory.getFirstName())
 		.selectTitle(FakerDataFactory.getTitle())
@@ -38,6 +46,7 @@ public class TC002_Registration extends BaseClass{
 		.enterUserName(FakerDataFactory.getUserName())
 		.enterEmail(FakerDataFactory.getEmailAddress())
 		.enterPassword(FakerDataFactory.getPassword())
+		.clickOnAgree()
 		.clickOnRegisterBtn()
 		.verifyUserRegistration()
 		.clickOnUILogo()

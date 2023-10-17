@@ -9,7 +9,7 @@ public class MenuPage extends BaseClass{
 	
 	public By oUILogo = By.xpath("//a[@class='navbar-brand']");
 	
-	private WebDriver driver;
+	public WebDriver driver;
 	
 	public MenuPage() {
 	}
